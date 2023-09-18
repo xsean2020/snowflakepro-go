@@ -10,20 +10,20 @@ import (
 /*
 A SFID is a 16 byte snowflake  Sortable Identifier
 
-	The components are encoded as 16 octets.
-	Each component is encoded with the MSB first (network byte order).
+The components are encoded as 16 octets.
+Each component is encoded with the MSB first (network byte order).
 
-	0                   1                   2                   3
-	0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-	+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-	|                      32_bit_uint_time_high                    |
-	+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-	|     16_bit_uint_time_low      |       16_bit_uint_node_id     |
-	+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-	|                       32_bit_uint_random                      |
-	+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-	|     8_bit_uint_random |          24_bit_uint_sn               |
-	+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+0                   1                   2                   3
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                      32_bit_uint_time_high                    |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     16_bit_uint_time_low      |       16_bit_uint_node_id     |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                       32_bit_uint_random                      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     8_bit_uint_random |          24_bit_uint_sn               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 */
 type SFID [16]byte
 
@@ -369,7 +369,7 @@ func (id *SFID) SetNode(node uint16) {
 	(*id)[7] = byte(node)
 }
 
-const MaxNonce = (uint64(1)<<40 - 1)
+const MaxNonce = 0xFFFFFFFFFF
 const maxSN = (uint32(1) << 24) - 1
 
 func (id *SFID) SetNonce(nonce uint64) error {

@@ -6,7 +6,7 @@ import (
 )
 
 func Test_Next(t *testing.T) {
-	var s, _ = NewSnowflakePro(100, uint64(rand.Int63n(int64(MaxNonce))))
+	var s, _ = NewSnowflakePro(100, uint64(rand.Int63n(MaxNonce)))
 	for i := 0; i < 1000; i++ {
 		id := s.Next()
 		if id.Time() != s.tms {
