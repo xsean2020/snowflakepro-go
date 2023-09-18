@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	SNMask = 0xFFFFFF // 32bit  4095
+	SNMask = 0xFFFFFF // 24bit  16777215
 )
 
 type SnowflakePro struct {

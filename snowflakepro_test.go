@@ -24,7 +24,7 @@ func Test_Next(t *testing.T) {
 		if id.SN() != s.sn {
 			t.Fatal("sn error")
 		}
-		t.Log(id)
+		// t.Log(id)
 	}
 }
 
