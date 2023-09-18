@@ -2,27 +2,6 @@ snowflakepro
 ====
 snowflakepro is a plus version with 128 bits  
   
-### ID Format
-
-```
-A SFID is a 16 byte snowflake  Sortable Identifier
-The components are encoded as 16 octets.
-Each component is encoded with the MSB first (network byte order).
-0                   1                   2                   3
-0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                      32_bit_uint_time_high                    |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|     16_bit_uint_time_low      |       16_bit_uint_node_id     |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                       32_bit_uint_random                      |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|     8_bit_uint_random |          24_bit_uint_sn               |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-```
-
-
-
 ## Getting Started
 
 ### Installing
@@ -66,4 +45,25 @@ generate and return a unique snowflake ID.
 
 ```
 
+## Specification
 
+Below is the current specification of ULID as implemented in this repository.
+
+### Components
+
+**Timestamp**
+- 48 bits
+- UNIX-time in milliseconds
+- Won't run out of space till the year 10889 AD
+
+**NodeID**
+- 16 bits
+- User defined nodeid .
+
+**Nonce**
+- 40 bits
+- User defined a nonce number for avoid confict.
+
+**SequenceNumber**
+- 24 bits
+- Sequence number in  milliseconds.  
